@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi';
 import { Form } from '@unform/web';
+import * as Yup from 'yup';
 
 import logoImg from '../../assets/logo.svg';
 
@@ -9,20 +10,31 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 
 const SignUp: React.FC = () => {
-  function handlesubmit(data: object): void {
-    console.log(data);
-  }
+  const handlesubmit = useCallback(async (data: object) => {
+    try {
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Nome obrigatório'),
+        email: Yup.string()
+          .required('E-mail obrigatório')
+          .email('Digite um e-mail válido'),
+        password: Yup.string().min(8, 'No minimo 8 digitos'),
+      });
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
+  }, []);
   return (
     <Container>
       <Background />
       <Content>
         <img src={logoImg} alt="GoBarber" />
 
-        <Form
-          onSubmit={() => {
-            handlesubmit({});
-          }}
-        >
+        <Form onSubmit={handlesubmit}>
           <h1>Faça seu cadastro</h1>
 
           <Input name="name" icon={FiUser} placeholder="Nome" />
