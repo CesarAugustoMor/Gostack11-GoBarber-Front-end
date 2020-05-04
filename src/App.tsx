@@ -1,7 +1,14 @@
 import React from 'react';
 
+import GlobalStyle from './styles/global';
+
 const App: React.FC = () => {
-  return <div>oi</div>;
+  return (
+    <>
+      <h1>Hello GoStack</h1>
+      <GlobalStyle />
+    </>
+  );
 };
 
 export default App;
