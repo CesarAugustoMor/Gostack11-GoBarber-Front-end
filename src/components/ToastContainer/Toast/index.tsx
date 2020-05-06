@@ -26,7 +26,7 @@ const Toast: React.FC<ToastProps> = ({ toast, style }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       removeToast(toast.id);
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearTimeout(timer);
@@ -43,7 +43,7 @@ const Toast: React.FC<ToastProps> = ({ toast, style }) => {
 
       <div>
         <strong>{toast.title}</strong>
-        {toast.description && <p>Não foi possível fazer login na aplicação</p>}
+        {toast.description && <p>{toast.description}</p>}
       </div>
       <button onClick={() => removeToast(toast.id)} type="button">
         <FiXCircle size={18} />
