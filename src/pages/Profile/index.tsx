@@ -145,7 +145,12 @@ const Profile: React.FC = () => {
             <img src={user.avatar_url} alt={user.name} />
             <label htmlFor="avatar">
               <FiCamera />
-              <input type="file" id="avatar" onChange={handleAvatarchange} />
+              <input
+                type="file"
+                accept="image/*"
+                id="avatar"
+                onChange={handleAvatarchange}
+              />
             </label>
           </AvatarInput>
 
