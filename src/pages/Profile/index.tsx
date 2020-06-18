@@ -97,7 +97,7 @@ const Profile: React.FC = () => {
           type: 'error',
           title: 'Erro na atualização!',
           description:
-            'Ocorreu um erro ao atualizar o perfil, cheque se as informações não validas.',
+            'Ocorreu um erro ao atualizar o perfil, cheque se as informações são validas.',
         });
       }
     },
