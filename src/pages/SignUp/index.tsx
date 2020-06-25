@@ -47,6 +47,7 @@ const SignUp: React.FC = () => {
           description: 'Você já pode fazer seu logon no Go Barber',
           type: 'success',
         });
+
         history.push('/');
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
@@ -55,6 +56,7 @@ const SignUp: React.FC = () => {
           formRef.current?.setErrors(errors);
           return;
         }
+
         addToast({
           type: 'error',
           title: 'Erro no cadastro',
@@ -82,7 +84,7 @@ const SignUp: React.FC = () => {
               name="password"
               icon={FiLock}
               type="password"
-              placeholder="Senha "
+              placeholder="Senha"
             />
 
             <Button type="submit">Cadastrar</Button>
