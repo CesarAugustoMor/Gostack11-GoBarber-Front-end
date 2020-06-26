@@ -48,9 +48,5 @@ export const ToastProvider: React.FC = ({ children }) => {
 export function useToast(): ToastContexData {
   const contex = useContext(ToastContext);
 
-  if (!contex) {
-    throw new Error('useToast must be used within a ToastProvider');
-  }
-
   return contex;
 }
